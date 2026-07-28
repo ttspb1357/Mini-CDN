@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Mini CDN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Mini CDN</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="info">
+            <h2>Contact</h2>
+
+            <div class="server-info">
+                <h3>Server Information</h3>
+                <p><strong>Serving from:</strong> <span id="server" class="highlight">Loading...</span></p>
+            </div>
+
+            <div class="contact-box">
+                <h3>Project Information</h3>
+                <p><strong>What:</strong> A mini CDN implementation in C++</p>
+                <p><strong>Why:</strong> To understand how real CDNs work at the system level</p>
+                <p><strong>How:</strong> Raw sockets, HTTP protocol, multithreading, caching</p>
+            </div>
+
+            <div class="contact-box">
+                <h3>Key Learning Outcomes</h3>
+                <ul>
+                    <li>Network programming with sockets</li>
+                    <li>HTTP protocol fundamentals</li>
+                    <li>Concurrent system design with threads</li>
+                    <li>Cache architecture and optimization</li>
+                    <li>Distributed system concepts</li>
+                </ul>
+            </div>
+
+            <div class="contact-box">
+                <h3>Testing Commands</h3>
+                <pre><code>
+# Test origin server
+curl localhost:8080/
+
+# Test edge server (first request - cache miss)
+curl localhost:8081/
+
+# Test edge server (second request - cache hit)
+curl localhost:8081/
+
+# Test multiple files
+curl localhost:8082/about.html
+curl localhost:8082/style.css
+                </code></pre>
+            </div>
+
+            <div class="contact-box">
+                <h3>Check Your Terminal</h3>
+                <p>Watch the server terminal to see:</p>
+                <pre><code>
+[edge_asia] Cache miss: / - fetching from origin
+[edge_asia] Cached: /
+[edge_asia] Response sent
+
+[edge_asia] Cache hit: /
+[edge_asia] Response sent
+                </code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Mini CDN Project. Built with C++ and POSIX Sockets.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

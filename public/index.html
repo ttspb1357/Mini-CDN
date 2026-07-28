@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini CDN — HTTP Server Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Mini CDN</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Welcome to the Mini CDN</h2>
+            <p>A Content Delivery Network built from scratch in C++</p>
+        </section>
+
+        <section class="info">
+            <h3>What is this?</h3>
+            <p>This is a fully functional CDN (Content Delivery Network) built using raw POSIX sockets and HTTP protocol implementation. It demonstrates how real CDNs like Cloudflare work.</p>
+            
+            <div class="server-info">
+                <h3>Server Information</h3>
+                <p><strong>Serving from:</strong> <span id="server" class="highlight">Loading...</span></p>
+                <p><strong>Request path:</strong> <span id="path" class="highlight">/</span></p>
+            </div>
+
+            <div class="features">
+                <h3>Features</h3>
+                <ul>
+                    <li>✓ Origin Server (Port 8080) — Master data store</li>
+                    <li>✓ Edge Servers (Ports 8081, 8082) — Cached copies</li>
+                    <li>✓ Intelligent Caching — Cache hits are 30x faster</li>
+                    <li>✓ HTTP/1.1 Implementation — From scratch, no frameworks</li>
+                    <li>✓ Multithreading — Handles concurrent clients</li>
+                    <li>✓ Content-Type Detection — Serves HTML, CSS, JS, images correctly</li>
+                </ul>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <p><strong>First Request (Cache Miss):</strong></p>
+                <pre>Edge Server → Check Cache → Not Found → Fetch from Origin → Cache Locally → Serve to User</pre>
+                
+                <p><strong>Second Request (Cache Hit):</strong></p>
+                <pre>Edge Server → Check Cache → Found → Serve from Cache (30x faster!)</pre>
+            </div>
+        </section>
+
+        <section class="test">
+            <h3>Test the CDN</h3>
+            <p>Visit different servers to see caching in action:</p>
+            <ul class="server-links">
+                <li><a href="http://localhost:8080/" target="_blank">Origin Server (Port 8080)</a></li>
+                <li><a href="http://localhost:8081/" target="_blank">Edge Asia (Port 8081)</a></li>
+                <li><a href="http://localhost:8082/" target="_blank">Edge Europe (Port 8082)</a></li>
+            </ul>
+            <p class="note">Check your server terminal to see "Cache hit" or "Cache miss" messages!</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Mini CDN Project. Built with C++ and POSIX Sockets.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Mini CDN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Mini CDN</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="info">
+            <h2>About This Project</h2>
+
+            <div class="server-info">
+                <h3>Server Information</h3>
+                <p><strong>Serving from:</strong> <span id="server" class="highlight">Loading...</span></p>
+            </div>
+
+            <h3>Architecture</h3>
+            <p>This mini-CDN consists of three server instances:</p>
+
+            <div class="architecture">
+                <div class="server-box">
+                    <h4>Origin Server (8080)</h4>
+                    <p>The master data store. All files are stored here in the <code>./public</code> folder.</p>
+                    <p><strong>Role:</strong> Source of truth</p>
+                </div>
+
+                <div class="server-box">
+                    <h4>Edge Asia (8081)</h4>
+                    <p>A cached copy of frequently requested files. Reduces origin load by 30x.</p>
+                    <p><strong>Cache Location:</strong> <code>./cache_asia/</code></p>
+                </div>
+
+                <div class="server-box">
+                    <h4>Edge Europe (8082)</h4>
+                    <p>Another edge server for geographic distribution simulation.</p>
+                    <p><strong>Cache Location:</strong> <code>./cache_europe/</code></p>
+                </div>
+            </div>
+
+            <h3>Technical Implementation</h3>
+            <ul>
+                <li><strong>Language:</strong> C++</li>
+                <li><strong>Network:</strong> POSIX Sockets (raw TCP)</li>
+                <li><strong>Protocol:</strong> HTTP/1.1 (manually implemented)</li>
+                <li><strong>Concurrency:</strong> C++ std::thread (multithreading)</li>
+                <li><strong>Compilation:</strong> g++ compiler on Linux/macOS</li>
+            </ul>
+
+            <h3>How Caching Works</h3>
+            <div class="caching-flow">
+                <div class="flow-step">
+                    <h4>Step 1: Check Cache</h4>
+                    <p>When a request arrives at an edge server, it first checks if the file exists locally.</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Step 2: Cache Hit</h4>
+                    <p>If found, serve from local cache (milliseconds). No origin connection needed.</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Step 3: Cache Miss</h4>
+                    <p>If not found, connect to origin server and fetch the file.</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Step 4: Cache & Serve</h4>
+                    <p>Save the file locally, then send to the user. Next request will be a cache hit.</p>
+                </div>
+            </div>
+
+            <h3>Smart Caching Features</h3>
+            <ul>
+                <li>✓ Only cache successful responses (200 OK)</li>
+                <li>✓ Don't cache errors (404, 500)</li>
+                <li>✓ Automatic Content-Type detection</li>
+                <li>✓ Path normalization (/ → /index.html)</li>
+                <li>✓ Security: Prevent path traversal attacks</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Mini CDN Project. Built with C++ and POSIX Sockets.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
