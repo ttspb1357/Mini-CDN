@@ -1,3 +1,5 @@
+# Mini CDN — HTTP Server with Edge Caching
+
 A fully functional Content Delivery Network built from scratch in C++ using raw POSIX sockets, multithreading, and HTTP/1.1 protocol implementation.
 
 ## Overview
